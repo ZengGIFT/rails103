@@ -17,17 +17,21 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-    @group.save
-
-    redirect_to groups_path
+    if @group.save
+      redirect_to groups_path
+    else
+      render :new
+    end
   end
 
   def update
     @group = Group.find(params[:id])
 
-    @group.update(group_params)
-
-    redirect_to groups_path, notice: "成功更新"
+    if @group.update(group_params)
+      redirect_to groups_path, notice: "成功更新"
+    else
+      render :edit
+    end
   end
 
   def destroy

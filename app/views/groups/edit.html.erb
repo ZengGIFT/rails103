@@ -6,6 +6,13 @@
 
     标题
     <%= f.text_field :title %>
+    <% if @group.errors.any? %>
+    <ul>
+      <% @group.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    <% end %>
     <br>
     叙述
     <br>
