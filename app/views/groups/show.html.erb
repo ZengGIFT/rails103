@@ -1,6 +1,8 @@
 <div class="col-md-12">
   <div class="group">
-    <%= link_to(" 编 辑 ", edit_group_path(@group), class:"btn btm-primary pull-right") %>
+    <% if current_user && current_user == @group.user %>
+      <%= link_to(" 编 辑 ", edit_group_path(@group), class:"btn btm-primary pull-right") %>
+    <% end %>
   </div>
 
   <h2><%= @group.title %></h2>
